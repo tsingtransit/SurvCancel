@@ -91,7 +91,9 @@ th, td { padding: 12px 13px; border-bottom: 1px solid #ededed; text-align: right
 th:first-child { text-align: left; }
 thead th { color: #555; font-size: 15px; font-weight: 600; }
 tbody th { font-weight: 400; }
-.references-section { padding-block: 44px 58px; border-top: 1px solid #e7e7e7; }
+.references-section { padding-block: 44px 42px; border-top: 1px solid #e7e7e7; }
+.citation-section { padding-block: 36px 58px; border-top: 1px solid #e7e7e7; }
+.bibtex-code { margin: 0; padding: 20px 24px; overflow-x: auto; border: 1px solid #e7e7e7; border-radius: 8px; background: #f8f9fa; color: #363636; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; font-size: 14.5px; line-height: 1.65; }
 .reference-list { padding: 0; margin: 0; list-style: none; font-size: 16px; line-height: 1.65; color: #555; }
 .reference-list li { display: grid; grid-template-columns: 35px minmax(0, 1fr); gap: 6px; padding: 12px 0; scroll-margin-top: 30px; }
 .reference-list li:target { background: #edf5fb; outline: 10px solid #edf5fb; border-radius: 2px; }
@@ -135,7 +137,9 @@ tbody th { font-weight: 400; }
   .experiment-figure figcaption { font-size: 15px; }
   .baseline-references, .metric-explanation { font-size: 15px; line-height: 1.7; }
   .benchmark-table summary { font-size: 15px; }
-  .references-section { padding-block: 34px 39px; }
+  .references-section { padding-block: 34px 32px; }
+  .citation-section { padding-block: 28px 39px; }
+  .bibtex-code { padding: 14px 16px; font-size: 12.5px; }
   .reference-list { font-size: 14px; }
   .reference-list li { grid-template-columns: 27px minmax(0, 1fr); gap: 4px; padding-block: 10px; }
   .page-footer { font-size: 12px; padding-inline: 20px; }

@@ -1,0 +1,160 @@
+# SurvCancel
+
+Official benchmark implementation for the **NeurIPS 2026 Evaluations & Datasets Track** paper:
+
+> **SurvCancel: A Longitudinal Dataset and Benchmark for Dynamic Order Cancellation Prediction in On-Demand Ride-Sharing Systems**  
+> Huayang Liu\*, Mingyu Zheng\*, Wei Zhang†, Yijun Bian, and Kai Wang  
+> *Tsinghua University & University of Copenhagen*
+
+[**[Dataset (Hugging Face)]**](https://huggingface.co/datasets/survcancel-anonymous/SurvCancel) | [**[Project Page]**](https://tsingtransit.github.io/survcancel/)
+
+---
+
+## Overview
+
+**SurvCancel** is a large-scale longitudinal dataset and benchmark for real-time, order-level cancellation prediction in on-demand ride-sharing systems. Built from operational logs across four service regions (`R1`–`R4`), it contains **173,037 released orders** and **7,944,171 snapshots** sampled at 10-second intervals along each order's pre-pickup trajectory—capturing both order-level lifecycle states and the surrounding supply-demand context (nearby active requests and available vehicles).
+
+We formulate cancellation prediction as a **stage-conditioned dynamic survival task**:
+- **Stage 0 (Pre-matching, 60 s default horizon):** At landmark time $\tau$, cancellation competes with vehicle assignment (`match`).
+- **Stage 1 (Post-matching, 30 s default horizon):** At landmark time $\tau$, cancellation competes with passenger pickup (`pickup`).
+
+To support standardized comparison across model families, this repository provides:
+- **Clean58 preprocessing:** Deterministic extraction of 58 standardized snapshot features, order-level splits, and fixed evaluation landmarks from the raw JSONL release.
+- **Evaluation protocols:** In-distribution (`id`), leave-one-region-out (`loro_R1`–`loro_R4`), global chronological (`chrono_global`), and within-region chronological (`chrono_R1`–`chrono_R4`) splits across five prediction-window settings.
+- **Seven baselines:** Classical survival models (`Landmark Cox`, `RSF`), neural competing-risk models (`DeepHit`, `DynDeepHit`, `SurvTRACE`, `TraCeR`), and our lightweight history-pooling baseline (`RiskPool`), plus a plug-and-play interface for custom models.
+
+---
+
+## Quickstart
+
+### 1. Environment Setup
+
+Run the following commands from the repository root (requires Python 3.11):
+
+```bash
+conda create -n survcancel python=3.11 -y
+conda activate survcancel
+python -m pip install -r requirements.txt
+```
+
+### 2. Download the Dataset
+
+Download the released JSONL shards (`train-R1.jsonl` through `train-R4.jsonl`, revision `51ab808`) from [Hugging Face](https://huggingface.co/datasets/survcancel-anonymous/SurvCancel):
+
+```bash
+bash scripts/download_data.sh
+```
+
+By default, files are saved to `data/hf_survcancel_release/`. To specify a custom target directory:
+
+```bash
+bash scripts/download_data.sh survcancel-anonymous/SurvCancel /path/to/raw-data
+```
+
+### 3. Prepare `Clean58` and Evaluation Protocols
+
+Stream the raw JSONL shards into the shared `Clean58` sequence tensor (`120 × 58` per order), generate order-level train/validation/test partitions, and fix evaluation landmarks (seed `42`):
+
+```bash
+bash scripts/prepare_clean58.sh data/hf_survcancel_release workdir
+```
+
+By default, this prepares all evaluation protocols (`id`, `loro_R1`–`loro_R4`, `chrono_global`, and `chrono_R1`–`chrono_R4`) and all five Stage 0 / Stage 1 prediction windows (`60/30`, `60/60`, `120/60`, `300/180`, and `600/300` seconds):
+
+```text
+workdir/
+  processed/dynamic_order_sequences_clean58.npz
+  protocols/
+    id/
+    loro_R1/ ... loro_R4/
+    chrono_global/
+    chrono_R1/ ... chrono_R4/
+  PREPARATION.json
+```
+
+If you only need the default in-distribution (`id`, `60/30` s) benchmark:
+
+```bash
+bash scripts/prepare_clean58.sh data/hf_survcancel_release workdir \
+  --protocols id --windows h060_030
+```
+
+---
+
+## Running Experiments
+
+### Reproduce Paper Results
+
+To run the full experimental suite reported in the paper and supplementary material:
+
+```bash
+./reproduce.sh --workdir workdir --device cuda:0
+```
+
+You can also run specific experiment groups via `--experiments`:
+- `main`: In-distribution benchmark across all seven models (`DeepHit`, `DynDeepHit`, `SurvTRACE`, `TraCeR`, `Cox`, `RSF`, `RiskPool`).
+- `shifts`: Leave-one-region-out (`R1`–`R4`) and global chronological evaluation (`RiskPool`, `DynDeepHit`, `TraCeR`, `RSF`).
+- `regional`: Within-region chronological evaluation (`DynDeepHit`, `TraCeR`).
+- `representation`: History and feature-masking sensitivity analyses for `RiskPool`.
+- `horizons`: Prediction-window sensitivity across `60/30`, `60/60`, `120/60`, `300/180`, and `600/300` s (`RiskPool`, `DynDeepHit`).
+- `distances`: Covariate-shift diagnostics (RBF MMD and 1D Wasserstein distances).
+- `inference`: Single-request latency and batched throughput measurements.
+
+Use `--dry-run` to inspect the execution plan without launching training, or `--resume` to skip completed runs and resume interrupted checkpoints.
+
+### Benchmark Selected or Custom Models
+
+Use `benchmark.sh` to evaluate specific built-in models (`deephit`, `dyn_deephit`, `survtrace`, `tracer`, `cox`, `rsf`, `riskpool`) on any prepared protocol and window:
+
+```bash
+./benchmark.sh --workdir workdir --models riskpool dyn_deephit --device cuda:0
+```
+
+To evaluate your own model under the exact same splits, landmarks, and metrics, implement a Python class with `fit(train_loader, val_loader)` and `predict_batch(batch)` returning `{"p_cancel_window": probs}` (see [`examples/custom_model.py`](examples/custom_model.py) for a minimal working example):
+
+```bash
+./benchmark.sh --workdir workdir \
+  --custom-model examples/custom_model.py:Model \
+  --model-name logistic --device cpu
+```
+
+---
+
+## Outputs and Evaluation Metrics
+
+Results are written to `outputs/reproducibility/` (for `reproduce.sh`) or `outputs/benchmark/` (for `benchmark.sh`). Each experiment directory contains:
+- `summary.csv` / `summary.json`: Mean and sample standard deviation across random seeds (`42`, `123`, `456`) for all metrics (cancel-window C-index, Brier score, AUROC, AP, log loss, 10-bin adaptive ECE, mean predicted risk, and aggregate calibration gap), reported both for raw predictions and validation-fitted stage-wise Platt scaling.
+- `per_seed.csv`: Per-seed breakdown across overall, stage-wise (`Stage 0`, `Stage 1`), regional (`R1`–`R4`), and region–stage strata.
+- `<model>_s<seed>/`: Saved configuration (`config.json`), model checkpoint, validation/test prediction arrays (`val_predictions.npz`, `test_predictions.npz`), and run logs.
+
+---
+
+## Repository Structure
+
+```text
+SurvCancel/
+  benchmark.sh              # Entry point for built-in or custom model evaluation
+  reproduce.sh              # Entry point for reproducing all paper experiments
+  requirements.txt          # Pinned Python 3.11 dependencies
+  configs/                  # Hyperparameter configs for models and feature masks
+  scripts/                  # Data download, Clean58 preparation, and model trainers
+  survbench/                # Core library: dataset loaders, models, metrics, calibration
+  survcancel_benchmark/     # CLI orchestration, shift diagnostics, and reporting
+  examples/custom_model.py  # Template for plugging in custom models
+  docs/                     # Static project page
+```
+
+---
+
+## Citation
+
+If you find SurvCancel useful in your research, please cite our paper:
+
+```bibtex
+@inproceedings{liu2026survcancel,
+  title     = {SurvCancel: A Longitudinal Dataset and Benchmark for Dynamic Order Cancellation Prediction in On-Demand Ride-Sharing Systems},
+  author    = {Liu, Huayang and Zheng, Mingyu and Zhang, Wei and Bian, Yijun and Wang, Kai},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track},
+  year      = {2026}
+}
+```

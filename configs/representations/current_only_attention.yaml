@@ -1,0 +1,57 @@
+data:
+  train_data_path: workdir/processed/dynamic_order_sequences_clean58.npz
+  split_path: workdir/protocols/id/order_split.json
+  val_sample_path: workdir/protocols/id/dynamic_val_samples.npz
+  test_sample_path: workdir/protocols/id/dynamic_test_samples.npz
+train_dataset:
+  split_name: train
+  epoch_size: 600000
+  matched_sampling: exp
+  matched_decay: 0.2
+  preload: true
+  tau_only: true
+eval_dataset:
+  preload: true
+loader:
+  train_batch_size: 512
+  eval_batch_size: 1024
+  train_num_workers: 8
+  eval_num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+  prefetch_factor: 4
+model:
+  x_dim: 58
+  h_dim_rnn: 256
+  h_dim_fc: 256
+  num_layers_rnn: 2
+  num_layers_att: 2
+  num_layers_cs: 2
+  stage_emb_dim: 16
+  rnn_type: LSTM
+  encoder_type: survcancel
+  head_type: pmf
+  dropout_rate: 0.3
+  learning_rate: 0.0001
+  weight_decay: 1.0e-05
+  epochs: 80
+  patience: 10
+  max_gradient_norm: 1.0
+  verbose: true
+  device: cuda:0
+  use_rel_time_pe: true
+  num_shared_layers: 2
+  use_interaction: true
+  feature_drop_indices: []
+  history_policy: inclusive_current
+  use_delta_features: false
+runtime:
+  seed: 42
+  torch_num_threads: 8
+  run_name: riskpool_current_only_attention
+output:
+  root_dir: workdir/runs
+window:
+  unmatched_h_seconds: 60.0
+  matched_h_seconds: 30.0
+  time_step_seconds: 10.0

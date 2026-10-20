@@ -1,0 +1,11 @@
+__pycache__/
+.DS_Store
+*.py[cod]
+.venv/
+/data/
+/workdir/
+/outputs/
+*.npz
+*.pt
+*.joblib
+*.log

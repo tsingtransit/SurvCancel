@@ -1,0 +1,24 @@
+data:
+  train_data_path: workdir/processed/dynamic_order_sequences_clean58.npz
+  split_path: workdir/protocols/id/order_split.json
+  val_sample_path: workdir/protocols/id/dynamic_val_samples.npz
+  test_sample_path: workdir/protocols/id/dynamic_test_samples.npz
+train_dataset:
+  matched_decay: 0.2
+model:
+  model: rsf
+  train_cap_per_stage: 30000
+  n_estimators: 100
+  max_depth: 12
+  min_samples_leaf: 100
+  max_features: sqrt
+  n_jobs: 12
+runtime:
+  seed: 42
+  run_name: rsf
+output:
+  root_dir: workdir/runs
+window:
+  unmatched_h_seconds: 60.0
+  matched_h_seconds: 30.0
+  time_step_seconds: 10.0

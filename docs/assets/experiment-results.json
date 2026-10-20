@@ -1,0 +1,312 @@
+{
+  "source": "SurvCancel manuscript: supplementary.tex",
+  "source_tables": [
+    "tab:supp_main_full",
+    "tab:supp_loro_full",
+    "tab:supp_global_chrono_full"
+  ],
+  "training_seeds": [
+    42,
+    123,
+    456
+  ],
+  "uncertainty": "Sample SD over training seeds, at manuscript precision; not a confidence interval. Reported 0.0000 may reflect SD below 0.00005.",
+  "display": "Figures show mean scores only; SD values are retained in this source data but are not plotted.",
+  "aggregation": {
+    "main": "pooled overall",
+    "loro": "equal-region macro",
+    "chrono": "pooled overall"
+  },
+  "landmarks": "Each protocol uses its own fixed evaluation landmarks.",
+  "change": "Shifted mean minus the matching ID reference mean, in C-index units.",
+  "model_references": {
+    "DeepHit": [
+      1
+    ],
+    "DynDeepHit": [
+      2
+    ],
+    "SurvTRACE": [
+      3
+    ],
+    "TraCeR": [
+      4
+    ],
+    "Landmark Cox": [
+      5,
+      7
+    ],
+    "RSF": [
+      6
+    ],
+    "RiskPool": "Introduced in this work"
+  },
+  "id": {
+    "DeepHit": {
+      "c_index": {
+        "mean": 0.6827,
+        "sd": 0.001
+      },
+      "stage0_c_index": {
+        "mean": 0.7127,
+        "sd": 0.0019
+      },
+      "stage1_c_index": {
+        "mean": 0.5866,
+        "sd": 0.0108
+      },
+      "brier": {
+        "mean": 0.0793,
+        "sd": 0.0005
+      },
+      "stage0_brier": {
+        "mean": 0.0892,
+        "sd": 0.0004
+      },
+      "stage1_brier": {
+        "mean": 0.0653,
+        "sd": 0.0008
+      }
+    },
+    "DynDeepHit": {
+      "c_index": {
+        "mean": 0.7496,
+        "sd": 0.0009
+      },
+      "stage0_c_index": {
+        "mean": 0.7618,
+        "sd": 0.001
+      },
+      "stage1_c_index": {
+        "mean": 0.709,
+        "sd": 0.0026
+      },
+      "brier": {
+        "mean": 0.0765,
+        "sd": 0.0001
+      },
+      "stage0_brier": {
+        "mean": 0.0868,
+        "sd": 0.0002
+      },
+      "stage1_brier": {
+        "mean": 0.062,
+        "sd": 0.0001
+      }
+    },
+    "SurvTRACE": {
+      "c_index": {
+        "mean": 0.735,
+        "sd": 0.0004
+      },
+      "stage0_c_index": {
+        "mean": 0.7608,
+        "sd": 0.0002
+      },
+      "stage1_c_index": {
+        "mean": 0.6327,
+        "sd": 0.0009
+      },
+      "brier": {
+        "mean": 0.0928,
+        "sd": 0.0002
+      },
+      "stage0_brier": {
+        "mean": 0.1102,
+        "sd": 0.0003
+      },
+      "stage1_brier": {
+        "mean": 0.0681,
+        "sd": 0.0001
+      }
+    },
+    "TraCeR": {
+      "c_index": {
+        "mean": 0.7485,
+        "sd": 0.0008
+      },
+      "stage0_c_index": {
+        "mean": 0.7616,
+        "sd": 0.0019
+      },
+      "stage1_c_index": {
+        "mean": 0.7,
+        "sd": 0.0025
+      },
+      "brier": {
+        "mean": 0.0894,
+        "sd": 0.001
+      },
+      "stage0_brier": {
+        "mean": 0.1059,
+        "sd": 0.001
+      },
+      "stage1_brier": {
+        "mean": 0.0661,
+        "sd": 0.0013
+      }
+    },
+    "Landmark Cox": {
+      "c_index": {
+        "mean": 0.7235,
+        "sd": 0.0009
+      },
+      "stage0_c_index": {
+        "mean": 0.7342,
+        "sd": 0.001
+      },
+      "stage1_c_index": {
+        "mean": 0.6741,
+        "sd": 0.0004
+      },
+      "brier": {
+        "mean": 0.0776,
+        "sd": 0.0
+      },
+      "stage0_brier": {
+        "mean": 0.0879,
+        "sd": 0.0
+      },
+      "stage1_brier": {
+        "mean": 0.0629,
+        "sd": 0.0
+      }
+    },
+    "RSF": {
+      "c_index": {
+        "mean": 0.7458,
+        "sd": 0.0004
+      },
+      "stage0_c_index": {
+        "mean": 0.7561,
+        "sd": 0.0002
+      },
+      "stage1_c_index": {
+        "mean": 0.7002,
+        "sd": 0.0002
+      },
+      "brier": {
+        "mean": 0.0757,
+        "sd": 0.0
+      },
+      "stage0_brier": {
+        "mean": 0.0851,
+        "sd": 0.0001
+      },
+      "stage1_brier": {
+        "mean": 0.0625,
+        "sd": 0.0
+      }
+    },
+    "RiskPool": {
+      "c_index": {
+        "mean": 0.7527,
+        "sd": 0.0004
+      },
+      "stage0_c_index": {
+        "mean": 0.765,
+        "sd": 0.0002
+      },
+      "stage1_c_index": {
+        "mean": 0.7061,
+        "sd": 0.0017
+      },
+      "brier": {
+        "mean": 0.0768,
+        "sd": 0.0001
+      },
+      "stage0_brier": {
+        "mean": 0.0871,
+        "sd": 0.0002
+      },
+      "stage1_brier": {
+        "mean": 0.0622,
+        "sd": 0.0
+      }
+    }
+  },
+  "loro": {
+    "RiskPool": {
+      "id": {
+        "mean": 0.7559,
+        "sd": 0.0016
+      },
+      "shift": {
+        "mean": 0.7197,
+        "sd": 0.0026
+      }
+    },
+    "DynDeepHit": {
+      "id": {
+        "mean": 0.756,
+        "sd": 0.0017
+      },
+      "shift": {
+        "mean": 0.7245,
+        "sd": 0.0029
+      }
+    },
+    "TraCeR": {
+      "id": {
+        "mean": 0.7505,
+        "sd": 0.003
+      },
+      "shift": {
+        "mean": 0.7159,
+        "sd": 0.0016
+      }
+    },
+    "RSF": {
+      "id": {
+        "mean": 0.7442,
+        "sd": 0.0035
+      },
+      "shift": {
+        "mean": 0.722,
+        "sd": 0.0016
+      }
+    }
+  },
+  "chrono": {
+    "RiskPool": {
+      "id": {
+        "mean": 0.7527,
+        "sd": 0.0004
+      },
+      "shift": {
+        "mean": 0.7351,
+        "sd": 0.0002
+      }
+    },
+    "DynDeepHit": {
+      "id": {
+        "mean": 0.7496,
+        "sd": 0.0009
+      },
+      "shift": {
+        "mean": 0.7322,
+        "sd": 0.0008
+      }
+    },
+    "TraCeR": {
+      "id": {
+        "mean": 0.7485,
+        "sd": 0.0008
+      },
+      "shift": {
+        "mean": 0.7329,
+        "sd": 0.0013
+      }
+    },
+    "RSF": {
+      "id": {
+        "mean": 0.7458,
+        "sd": 0.0004
+      },
+      "shift": {
+        "mean": 0.7305,
+        "sd": 0.0005
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+train_dataset:
+  split_name: train
+  epoch_size: 600000
+  matched_sampling: exp
+  matched_decay: 0.2
+  preload: true
+  tau_only: false
+eval_dataset:
+  preload: true
+loader:
+  train_batch_size: 512
+  eval_batch_size: 1024
+  train_num_workers: 0
+  eval_num_workers: 0
+  pin_memory: false
+model:
+  epochs: 5
+runtime:
+  torch_num_threads: 8

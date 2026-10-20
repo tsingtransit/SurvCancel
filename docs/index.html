@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SurvCancel: Dynamic Order Cancellation Prediction</title>
+  <meta name="description" content="SurvCancel is a longitudinal dataset and benchmark for dynamic order cancellation prediction in on-demand ride-sharing: 173K orders, 7.9M snapshots, four service regions.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="citation_title" content="SurvCancel: A Longitudinal Dataset and Benchmark for Dynamic Order Cancellation Prediction in On-Demand Ride-Sharing Systems">
+  <meta name="citation_author" content="Liu, Huayang">
+  <meta name="citation_author" content="Zheng, Mingyu">
+  <meta name="citation_author" content="Zhang, Wei">
+  <meta name="citation_author" content="Bian, Yijun">
+  <meta name="citation_author" content="Wang, Kai">
+  <meta name="citation_conference_title" content="NeurIPS 2026 Evaluations &amp; Datasets Track">
+  <meta property="og:title" content="SurvCancel">
+  <meta property="og:description" content="A longitudinal dataset and benchmark for dynamic order cancellation prediction in on-demand ride-sharing systems.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#abstract">Skip to abstract</a>
+  <main>
+    <header class="publication-header">
+      <div class="container">
+        <h1 class="publication-title">SurvCancel: A Longitudinal Dataset and Benchmark for Dynamic Order Cancellation Prediction in On-Demand Ride-Sharing Systems</h1>
+
+        <p class="venue"><strong>NeurIPS 2026</strong><span>Evaluations &amp; Datasets Track</span></p>
+
+        <div class="authors" aria-label="Authors">
+          <span>Huayang Liu<sup>1,*</sup></span>
+          <span>Mingyu Zheng<sup>1,*</sup></span>
+          <span>Wei Zhang<sup>1,2,†</sup></span>
+          <span>Yijun Bian<sup>3</sup></span>
+          <span>Kai Wang<sup>1,2</sup></span>
+        </div>
+
+        <div class="affiliations">
+          <p><sup>1</sup> School of Vehicle and Mobility, Tsinghua University</p>
+          <p><sup>2</sup> State Key Laboratory of Intelligent Green Vehicle and Mobility, Tsinghua University</p>
+          <p><sup>3</sup> Department of Computer Science, University of Copenhagen</p>
+        </div>
+        <div class="institution-logos" aria-label="Author institutions">
+          <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener noreferrer" aria-label="Tsinghua University"><img class="tsinghua-logo" src="assets/tsinghua-logo.jpg" alt="Tsinghua University" width="1400" height="600"></a>
+          <a href="https://www.ku.dk/en" target="_blank" rel="noopener noreferrer" aria-label="University of Copenhagen"><img class="ucph-logo" src="assets/ucph-logo.png" alt="University of Copenhagen" width="2760" height="1028"></a>
+        </div>
+        <p class="author-notes"><span><sup>*</sup> Equal contribution</span><span><sup>†</sup> Corresponding author</span></p>
+
+        <nav class="resource-links" aria-label="Project resources">
+          <!-- Replace the Paper button with a link when the URL is ready. -->
+          <button class="resource-button" type="button" disabled title="Paper link to be added">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v6h5M8 13h8M8 17h6"/></svg>
+            Paper
+          </button>
+          <a class="resource-button is-primary" href="https://huggingface.co/datasets/survcancel-anonymous/SurvCancel" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></svg>
+            Dataset
+          </a>
+          <a class="resource-button is-primary" href="https://github.com/tsingtransit/survcancel" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 3l-4 18"/></svg>
+            Code
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="abstract" class="abstract-section" aria-labelledby="abstract-heading">
+      <div class="reading-width">
+        <h2 id="abstract-heading">Abstract</h2>
+        <p>Passenger-order cancellation is a critical source of uncertainty in on-demand ride-sharing systems, where requests, assignments, and vehicle routes evolve continuously in real time. Due to shared capacity and coupled routes, a single cancellation may propagate through downstream matching and routing decisions, degrading system efficiency and service reliability. However, cancellation prediction in on-demand ride-sharing remains difficult to study systematically due to the lack of large-scale longitudinal datasets, standardized evaluation protocols, and fine-grained real-time benchmarks.</p>
+        <p>In this work, we introduce <strong>SurvCancel</strong>, a real-world longitudinal dataset and benchmark for dynamic passenger-order cancellation prediction in on-demand ride-sharing systems. Constructed from operational logs collected across four service regions, SurvCancel contains <strong>173K released orders and 7.9M time-dependent snapshots</strong>, capturing both order-level attributes and the evolving supply-demand environment throughout each order's lifecycle. We formulate cancellation prediction as a stage-conditioned dynamic survival task: at each landmark time, models estimate short-term cancellation risk from the historical state sequence observed so far. Evaluating representative classical and neural survival models under both in-distribution and distribution-shift protocols reveals stage-dependent model behavior and distinct robustness patterns across regions and time periods.</p>
+      </div>
+    </section>
+
+    <section id="overview" class="overview container" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Dataset Overview</h2>
+      <figure>
+        <a class="figure-link" href="assets/overview.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size overview figure from the paper">
+          <img class="overview-image" src="assets/overview.png" width="1600" height="1109" loading="lazy" alt="The paper's SurvCancel overview: two pre-pickup lifecycle stages, possible cancellation events, history-only landmark prediction, and order-level and environment-level snapshot features.">
+        </a>
+        <figcaption><strong>Dynamic cancellation prediction across the order lifecycle.</strong> Each 10-second snapshot captures the focal order's status alongside its surrounding supply-demand context. Under our landmark prediction protocol <a class="citation" href="#ref-7" aria-label="Reference 7, landmark prediction">[7]</a>, models observe only the prefix history up to the landmark time <em>&tau;</em> and estimate short-term cancellation risk within a stage-specific future window (60 s before matching; 30 s after matching).</figcaption>
+      </figure>
+    </section>
+
+    <section class="dataset-section container" aria-labelledby="dataset-heading">
+      <h2 id="dataset-heading">The SurvCancel Dataset</h2>
+      <div class="statistics" aria-label="Dataset statistics">
+        <div><strong><data value="173037" title="173,037 orders">173K</data></strong><span>Orders</span></div>
+        <div><strong><data value="7944171" title="7,944,171 snapshots">7.9M</data></strong><span>Snapshots</span></div>
+        <div><strong>4</strong><span>Service regions</span></div>
+        <div><strong>10 s</strong><span>Snapshot interval</span></div>
+      </div>
+      <p class="dataset-description">Each order is tracked longitudinally along its pre-pickup trajectory—from creation through vehicle matching to pickup or cancellation—jointly with nearby active requests and available fleet capacity. Alongside the raw variable-length snapshots, we release <strong>Clean58</strong>, a standardized 58-dimensional representation that provides a unified input interface across model families.</p>
+      <p class="protocol-note">Our benchmark suite evaluates models under in-distribution, leave-one-region-out (LORO), and chronological splits using order-level partitioning and shared test landmarks.</p>
+    </section>
+
+    <section id="experiments" class="experiments-section container" aria-labelledby="experiments-heading">
+      <h2 id="experiments-heading">Experiments</h2>
+      <p class="section-intro">We benchmark six representative survival models alongside <strong>RiskPool</strong>, our lightweight history-pooling architecture. All methods are evaluated on the shared Clean58 representation and fixed test landmarks across three random seeds.</p>
+      <p class="baseline-references">Evaluated baselines span static competing-risk survival modeling (DeepHit <a class="citation" href="#ref-1" aria-label="Reference 1, DeepHit">[1]</a>), recurrent dynamic survival modeling (DynDeepHit <a class="citation" href="#ref-2" aria-label="Reference 2, Dynamic-DeepHit">[2]</a>), Transformer-based survival models (SurvTRACE <a class="citation" href="#ref-3" aria-label="Reference 3, SurvTRACE">[3]</a> and TraCeR <a class="citation" href="#ref-4" aria-label="Reference 4, TraCeR">[4]</a>), Landmark Cox regression <a class="citation" href="#ref-5" aria-label="Reference 5, Cox regression">[5]</a><a class="citation" href="#ref-7" aria-label="Reference 7, landmarking">[7]</a>, and Random Survival Forests (RSF) <a class="citation" href="#ref-6" aria-label="Reference 6, Random Survival Forests">[6]</a>.</p>
+
+      <h3>Main Benchmark</h3>
+      <p class="metric-explanation">We evaluate both risk discrimination via the cancel-window <strong>C-index</strong> <a class="citation" href="#ref-8" aria-label="Reference 8, concordance index">[8]</a> and probabilistic accuracy via the cancel-window <strong>Brier score</strong> <a class="citation" href="#ref-9" aria-label="Reference 9, Brier score">[9]</a>.</p>
+      <figure class="experiment-figure">
+        <a class="figure-link" href="assets/main-results.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size main benchmark chart"><picture><source media="(max-width: 700px)" srcset="assets/main-results-mobile.svg" width="520" height="1120"><img src="assets/main-results.svg" width="1420" height="630" loading="lazy" alt="Seven models are ranked separately for each metric. RiskPool has the highest overall cancel-window C-index, 0.7527. RSF has the lowest Brier score, 0.0757. Blue highlights the best mean in each panel. Points show means over three training seeds."></picture></a>
+        <figcaption><strong>Risk ranking and probability calibration favor different model families.</strong> RiskPool achieves the best overall C-index (0.7527), whereas RSF <a class="citation" href="#ref-6">[6]</a> attains the lowest raw Brier score (0.0757), demonstrating that strong risk ordering does not automatically guarantee well-calibrated cancellation probabilities. Models are ordered from best to worst in each panel (mean over three seeds; best in blue).</figcaption>
+      </figure>
+
+      <details class="benchmark-table">
+        <summary>View stage-wise benchmark scores</summary>
+        <div class="table-scroll">
+          <table>
+            <caption>In-distribution test results on Clean58 (mean over three seeds). Stage 0: pre-matching (60 s horizon); Stage 1: post-matching (30 s horizon).</caption>
+            <thead><tr><th scope="col">Model</th><th scope="col">Overall C-index &uarr;</th><th scope="col">Stage 0 C-index &uarr;</th><th scope="col">Stage 1 C-index &uarr;</th><th scope="col">Brier &darr;</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">RiskPool (ours)</th><td><strong>0.7527</strong></td><td><strong>0.7650</strong></td><td>0.7061</td><td>0.0768</td></tr>
+              <tr><th scope="row">DynDeepHit <a class="citation" href="#ref-2">[2]</a></th><td>0.7496</td><td>0.7618</td><td><strong>0.7090</strong></td><td>0.0765</td></tr>
+              <tr><th scope="row">TraCeR <a class="citation" href="#ref-4">[4]</a></th><td>0.7485</td><td>0.7616</td><td>0.7000</td><td>0.0894</td></tr>
+              <tr><th scope="row">RSF <a class="citation" href="#ref-6">[6]</a></th><td>0.7458</td><td>0.7561</td><td>0.7002</td><td><strong>0.0757</strong></td></tr>
+              <tr><th scope="row">SurvTRACE <a class="citation" href="#ref-3">[3]</a></th><td>0.7350</td><td>0.7608</td><td>0.6327</td><td>0.0928</td></tr>
+              <tr><th scope="row">Landmark Cox <a class="citation" href="#ref-5">[5]</a><a class="citation" href="#ref-7">[7]</a></th><td>0.7235</td><td>0.7342</td><td>0.6741</td><td>0.0776</td></tr>
+              <tr><th scope="row">DeepHit <a class="citation" href="#ref-1">[1]</a></th><td>0.6827</td><td>0.7127</td><td>0.5866</td><td>0.0793</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <h3>Generalization Across Regions and Time</h3>
+      <p class="metric-explanation">We evaluate the four top-performing models under spatial transfer (leave-one-region-out across R1–R4) and temporal shift (training on earlier dates and testing on future orders), comparing each shifted C-index against its corresponding in-distribution (ID) reference.</p>
+      <figure class="experiment-figure">
+        <a class="figure-link" href="assets/distribution-shift.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size distribution-shift chart"><picture><source media="(max-width: 700px)" srcset="assets/distribution-shift-mobile.svg" width="520" height="1080"><img src="assets/distribution-shift.svg" width="1420" height="640" loading="lazy" alt="All four models lose C-index under regional and temporal shifts. DynDeepHit leads the unseen-region comparison at 0.7245, a change of minus 0.0315 from its ID macro reference. RiskPool leads the later-date comparison at 0.7351, a change of minus 0.0176 from its pooled ID reference. Hollow gray points are ID scores; solid blue points are shifted scores."></picture></a>
+        <figcaption><strong>Distinct robustness patterns emerge under spatial versus temporal shift.</strong> While all models experience moderate degradation relative to their ID references (hollow gray points), DynDeepHit <a class="citation" href="#ref-2">[2]</a> achieves the highest macro-average C-index on unseen regions (0.7245), whereas RiskPool leads under chronological evaluation on future orders (0.7351).</figcaption>
+      </figure>
+    </section>
+
+    <section id="references" class="references-section reading-width" aria-labelledby="references-heading">
+      <h2 id="references-heading">References</h2>
+      <ol class="reference-list">
+        <li id="ref-1"><span class="reference-number">[1]</span><div>Changhee Lee, William R. Zame, Jinsung Yoon, and Mihaela van der Schaar. <a href="https://doi.org/10.1609/aaai.v32i1.11842" target="_blank" rel="noopener noreferrer">DeepHit: A Deep Learning Approach to Survival Analysis With Competing Risks.</a> <em>AAAI</em>, 2018.</div></li>
+        <li id="ref-2"><span class="reference-number">[2]</span><div>Changhee Lee, Jinsung Yoon, and Mihaela van der Schaar. <a href="https://doi.org/10.1109/TBME.2019.2909027" target="_blank" rel="noopener noreferrer">Dynamic-DeepHit: A Deep Learning Approach for Dynamic Survival Analysis With Competing Risks Based on Longitudinal Data.</a> <em>IEEE Transactions on Biomedical Engineering</em>, 67(1):122–133, 2020.</div></li>
+        <li id="ref-3"><span class="reference-number">[3]</span><div>Zifeng Wang and Jimeng Sun. <a href="https://doi.org/10.1145/3535508.3545521" target="_blank" rel="noopener noreferrer">SurvTRACE: Transformers for Survival Analysis With Competing Events.</a> <em>ACM BCB</em>, 2022.</div></li>
+        <li id="ref-4"><span class="reference-number">[4]</span><div>Maxmillan Ries and Sohan Seth. <a href="https://arxiv.org/abs/2512.18129" target="_blank" rel="noopener noreferrer">TraCeR: Transformer-Based Competing Risk Analysis with Longitudinal Covariates.</a> <em>arXiv:2512.18129</em>, 2025.</div></li>
+        <li id="ref-5"><span class="reference-number">[5]</span><div>D. R. Cox. <a href="https://doi.org/10.1111/j.2517-6161.1972.tb00899.x" target="_blank" rel="noopener noreferrer">Regression Models and Life-Tables.</a> <em>Journal of the Royal Statistical Society, Series B</em>, 34(2):187–220, 1972.</div></li>
+        <li id="ref-6"><span class="reference-number">[6]</span><div>Hemant Ishwaran, Udaya B. Kogalur, Eugene H. Blackstone, and Michael S. Lauer. <a href="https://doi.org/10.1214/08-AOAS169" target="_blank" rel="noopener noreferrer">Random Survival Forests.</a> <em>The Annals of Applied Statistics</em>, 2(3):841–860, 2008.</div></li>
+        <li id="ref-7"><span class="reference-number">[7]</span><div>Hans C. van Houwelingen. <a href="https://doi.org/10.1111/j.1467-9469.2006.00529.x" target="_blank" rel="noopener noreferrer">Dynamic Prediction by Landmarking in Event History Analysis.</a> <em>Scandinavian Journal of Statistics</em>, 34(1):70–85, 2007.</div></li>
+        <li id="ref-8"><span class="reference-number">[8]</span><div>Frank E. Harrell Jr., Kerry L. Lee, Robert M. Califf, David B. Pryor, and Robert A. Rosati. <a href="https://doi.org/10.1002/sim.4780030207" target="_blank" rel="noopener noreferrer">Regression Modelling Strategies for Improved Prognostic Prediction.</a> <em>Statistics in Medicine</em>, 3(2):143–152, 1984.</div></li>
+        <li id="ref-9"><span class="reference-number">[9]</span><div>Glenn W. Brier. <a href="https://doi.org/10.1175/1520-0493(1950)078%3C0001:VOFEIT%3E2.0.CO;2" target="_blank" rel="noopener noreferrer">Verification of Forecasts Expressed in Terms of Probability.</a> <em>Monthly Weather Review</em>, 78(1):1–3, 1950.</div></li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p class="template-credit">Website theme adapted from <a href="https://droid-dataset.github.io/" target="_blank" rel="noopener noreferrer">DROID</a>, based on <a href="https://nerfies.github.io/" target="_blank" rel="noopener noreferrer">Nerfies</a> and <a href="https://eureka-research.github.io/" target="_blank" rel="noopener noreferrer">Eureka</a>.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+data:
+  train_data_path: workdir/processed/dynamic_order_sequences_clean58.npz
+  split_path: workdir/protocols/id/order_split.json
+  val_sample_path: workdir/protocols/id/dynamic_val_samples.npz
+  test_sample_path: workdir/protocols/id/dynamic_test_samples.npz
+train_dataset:
+  split_name: train
+  epoch_size: 600000
+  matched_sampling: exp
+  matched_decay: 0.2
+  preload: true
+eval_dataset:
+  preload: true
+loader:
+  train_batch_size: 256
+  eval_batch_size: 1024
+  train_num_workers: 8
+  eval_num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+  prefetch_factor: 4
+model:
+  x_dim: 58
+  d_model: 128
+  nhead: 4
+  num_layers: 3
+  dim_feedforward: 256
+  h_dim_fc: 256
+  num_layers_cs: 2
+  stage_emb_dim: 16
+  horizon_emb_dim: 8
+  dropout_rate: 0.1
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  epochs: 80
+  patience: 10
+  max_gradient_norm: 1.0
+  cancel_loss_weight: 2.0
+  progress_loss_weight: 1.0
+  stay_loss_weight: 1.0
+  unmatched_stage_loss_weight: 1.0
+  matched_stage_loss_weight: 1.25
+  verbose: true
+  device: cuda:0
+runtime:
+  seed: 42
+  torch_num_threads: 8
+  run_name: survtrace
+output:
+  root_dir: workdir/runs
+window:
+  unmatched_h_seconds: 60.0
+  matched_h_seconds: 30.0
+  time_step_seconds: 10.0

@@ -14,6 +14,7 @@
   <a href="https://tsingtransit.github.io/survcancel/"><img src="https://img.shields.io/badge/Project_Page-Website-3273DC?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project Page"></a>
   <a href="https://huggingface.co/datasets/survcancel-anonymous/SurvCancel"><img src="https://img.shields.io/badge/Dataset-Hugging_Face-FFD21E?style=for-the-badge&amp;logo=huggingface&amp;logoColor=black" alt="Dataset on Hugging Face"></a>
   <a href="#quickstart"><img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python 3.11"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=for-the-badge" alt="Code license: MIT"></a>
   <a href="https://github.com/tsingtransit/survcancel/stargazers"><img src="https://img.shields.io/github/stars/tsingtransit/survcancel?style=for-the-badge&amp;logo=github&amp;logoColor=white&amp;color=363636" alt="GitHub Stars"></a>
 </p>
 
@@ -25,7 +26,8 @@
   <a href="#quickstart">Quickstart</a> &nbsp;&nbsp;
   <a href="#experiments">Experiments</a> &nbsp;&nbsp;
   <a href="#outputs">Results</a> &nbsp;&nbsp;
-  <a href="#citation">Citation</a>
+  <a href="#citation">Citation</a> &nbsp;&nbsp;
+  <a href="#license">License</a>
 </p>
 
 ---
@@ -203,6 +205,7 @@ Browse the [main benchmark and generalization results](https://tsingtransit.gith
 
 ```text
 survcancel/
+  LICENSE                   # MIT license for the source code
   benchmark.sh              # Entry point for built-in or custom model evaluation
   reproduce.sh              # Entry point for reproducing all paper experiments
   requirements.txt          # Pinned Python 3.11 dependencies
@@ -230,3 +233,13 @@ If you find SurvCancel useful in your research, please cite our paper:
   year      = {2026}
 }
 ```
+
+---
+
+<a name="license"></a>
+
+## 📄 License
+
+The source code in this repository is licensed under the [MIT License](LICENSE).
+
+The SurvCancel dataset is released separately under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/), as stated in its [Hugging Face dataset card](https://huggingface.co/datasets/survcancel-anonymous/SurvCancel). The code license does not grant additional rights to use the dataset. Third-party dependencies and assets remain subject to their respective licenses.

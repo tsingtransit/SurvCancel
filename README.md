@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://tsingtransit.github.io/survcancel/"><img src="https://img.shields.io/badge/Project_Page-Website-3273DC?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project Page"></a>
+  <a href="https://tsingtransit.github.io/SurvCancel/"><img src="https://img.shields.io/badge/Project_Page-Website-3273DC?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project Page"></a>
   <a href="https://huggingface.co/datasets/survcancel-anonymous/SurvCancel"><img src="https://img.shields.io/badge/Dataset-Hugging_Face-FFD21E?style=for-the-badge&amp;logo=huggingface&amp;logoColor=black" alt="Dataset on Hugging Face"></a>
   <a href="#quickstart"><img src="https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python 3.11"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=for-the-badge" alt="Code license: MIT"></a>
@@ -54,7 +54,7 @@ To support standardized comparison across model families, this repository provid
 - **Seven baselines:** Classical survival models (`Landmark Cox`, `RSF`), neural competing-risk models (`DeepHit`, `DynDeepHit`, `SurvTRACE`, `TraCeR`), and our lightweight history-pooling baseline (`RiskPool`), plus a plug-and-play interface for custom models.
 
 <p align="center">
-  <a href="https://tsingtransit.github.io/survcancel/#overview"><img src="docs/assets/overview.png" width="100%" alt="SurvCancel overview: the two pre-pickup order stages, history-only landmark prediction, and order-level and environment-level snapshot features."></a>
+  <a href="https://tsingtransit.github.io/SurvCancel/#overview"><img src="docs/assets/overview.png" width="100%" alt="SurvCancel overview: the two pre-pickup order stages, history-only landmark prediction, and order-level and environment-level snapshot features."></a>
 </p>
 
 <p align="center"><em>Observe an order's history up to the current landmark and predict cancellation within its stage-specific future window.</em></p>
@@ -197,7 +197,7 @@ Results are written to `outputs/reproducibility/` (for `reproduce.sh`) or `outpu
 
 Metrics include cancel-window C-index, Brier score, AUROC, AP, log loss, 10-bin adaptive ECE, mean predicted risk, and aggregate calibration gap. Scores are reported for both raw predictions and validation-fitted stage-wise Platt scaling.
 
-Browse the [main benchmark and generalization results](https://tsingtransit.github.io/survcancel/#experiments) on the project page.
+Browse the [main benchmark and generalization results](https://tsingtransit.github.io/SurvCancel/#experiments) on the project page.
 
 ---
 

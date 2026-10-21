@@ -78,9 +78,7 @@
     <section id="overview" class="overview container" aria-labelledby="overview-heading">
       <h2 id="overview-heading">Dataset Overview</h2>
       <figure>
-        <a class="figure-link" href="assets/overview.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size overview figure from the paper">
-          <img class="overview-image" src="assets/overview.png" width="1600" height="1109" loading="lazy" alt="The paper's SurvCancel overview: two pre-pickup lifecycle stages, possible cancellation events, history-only landmark prediction, and order-level and environment-level snapshot features.">
-        </a>
+        <img class="overview-image" src="assets/overview.png" width="1600" height="1109" loading="lazy" alt="The paper's SurvCancel overview: two pre-pickup lifecycle stages, possible cancellation events, history-only landmark prediction, and order-level and environment-level snapshot features.">
         <figcaption><strong>Dynamic cancellation prediction across the order lifecycle.</strong> Each 10-second snapshot captures the focal order's status alongside its surrounding supply-demand context. Under our landmark prediction protocol <a class="citation" href="#ref-7" aria-label="Reference 7, landmark prediction">[7]</a>, models observe only the prefix history up to the landmark time <em>&tau;</em> and estimate short-term cancellation risk within a stage-specific future window (60 s before matching; 30 s after matching).</figcaption>
       </figure>
     </section>
@@ -105,7 +103,7 @@
       <h3>Main Benchmark</h3>
       <p class="metric-explanation">We evaluate both risk discrimination via the cancel-window <strong>C-index</strong> <a class="citation" href="#ref-8" aria-label="Reference 8, concordance index">[8]</a> and probabilistic accuracy via the cancel-window <strong>Brier score</strong> <a class="citation" href="#ref-9" aria-label="Reference 9, Brier score">[9]</a>.</p>
       <figure class="experiment-figure">
-        <a class="figure-link" href="assets/main-results.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size main benchmark chart"><picture><source media="(max-width: 700px)" srcset="assets/main-results-mobile.svg" width="520" height="1120"><img src="assets/main-results.svg" width="1420" height="630" loading="lazy" alt="Seven models are ranked separately for each metric. RiskPool has the highest overall cancel-window C-index, 0.7527. RSF has the lowest Brier score, 0.0757. Blue highlights the best mean in each panel. Points show means over three training seeds."></picture></a>
+        <picture><source media="(max-width: 700px)" srcset="assets/main-results-mobile.svg" width="520" height="1120"><img src="assets/main-results.svg" width="1420" height="630" loading="lazy" alt="Seven models are ranked separately for each metric. RiskPool has the highest overall cancel-window C-index, 0.7527. RSF has the lowest Brier score, 0.0757. Blue highlights the best mean in each panel. Points show means over three training seeds."></picture>
         <figcaption><strong>Risk ranking and probability calibration favor different model families.</strong> RiskPool achieves the best overall C-index (0.7527), whereas RSF <a class="citation" href="#ref-6">[6]</a> attains the lowest raw Brier score (0.0757), demonstrating that strong risk ordering does not automatically guarantee well-calibrated cancellation probabilities. Models are ordered from best to worst in each panel (mean over three seeds; best in blue).</figcaption>
       </figure>
 
@@ -131,7 +129,7 @@
       <h3>Generalization Across Regions and Time</h3>
       <p class="metric-explanation">We evaluate the four top-performing models under spatial transfer (leave-one-region-out across R1–R4) and temporal shift (training on earlier dates and testing on future orders), comparing each shifted C-index against its corresponding in-distribution (ID) reference.</p>
       <figure class="experiment-figure">
-        <a class="figure-link" href="assets/distribution-shift.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size distribution-shift chart"><picture><source media="(max-width: 700px)" srcset="assets/distribution-shift-mobile.svg" width="520" height="1080"><img src="assets/distribution-shift.svg" width="1420" height="640" loading="lazy" alt="All four models lose C-index under regional and temporal shifts. DynDeepHit leads the unseen-region comparison at 0.7245, a change of minus 0.0315 from its ID macro reference. RiskPool leads the later-date comparison at 0.7351, a change of minus 0.0176 from its pooled ID reference. Hollow gray points are ID scores; solid blue points are shifted scores."></picture></a>
+        <picture><source media="(max-width: 700px)" srcset="assets/distribution-shift-mobile.svg" width="520" height="1080"><img src="assets/distribution-shift.svg" width="1420" height="640" loading="lazy" alt="All four models lose C-index under regional and temporal shifts. DynDeepHit leads the unseen-region comparison at 0.7245, a change of minus 0.0315 from its ID macro reference. RiskPool leads the later-date comparison at 0.7351, a change of minus 0.0176 from its pooled ID reference. Hollow gray points are ID scores; solid blue points are shifted scores."></picture>
         <figcaption><strong>Distinct robustness patterns emerge under spatial versus temporal shift.</strong> While all models experience moderate degradation relative to their ID references (hollow gray points), DynDeepHit <a class="citation" href="#ref-2">[2]</a> achieves the highest macro-average C-index on unseen regions (0.7245), whereas RiskPool leads under chronological evaluation on future orders (0.7351).</figcaption>
       </figure>
     </section>

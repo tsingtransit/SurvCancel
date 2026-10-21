@@ -243,3 +243,9 @@ If you find SurvCancel useful in your research, please cite our paper:
 The source code in this repository is licensed under the [MIT License](LICENSE).
 
 The SurvCancel dataset is released separately under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/), as stated in its [Hugging Face dataset card](https://huggingface.co/datasets/survcancel-anonymous/SurvCancel). The code license does not grant additional rights to use the dataset. Third-party dependencies and assets remain subject to their respective licenses.
+
+---
+
+## 🙏 Acknowledgements
+
+The structure and visual style of this README were inspired by [EVA-Client](https://github.com/Noietch/EVA-CLIENT). We thank its contributors for sharing their work.

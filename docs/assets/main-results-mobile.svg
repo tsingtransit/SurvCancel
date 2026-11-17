@@ -42,7 +42,7 @@ L 295.776 118.861151
 L 295.776 145.704329 
 L 146.016 145.704329 
 z
-" clip-path="url(#p8d077db255)" style="fill: #edf5fb; stroke: #edf5fb; stroke-linejoin: miter"/>
+" clip-path="url(#p8d077db255)" style="fill: #fff3e7; stroke: #fff3e7; stroke-linejoin: miter"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
@@ -118,7 +118,7 @@ L 295.776 112.896
     <g id="ytick_1">
      <g id="line2d_9"/>
      <g id="text_6">
-      <text style="font-weight: 700; font-size: 13px; font-family: 'Arial'; text-anchor: end; fill: #2771ad" x="134.016" y="137.014917" transform="rotate(-0 134.016 137.014917)">RiskPool (ours)</text>
+      <text style="font-weight: 700; font-size: 13px; font-family: 'Arial'; text-anchor: end; fill: #b63b09" x="134.016" y="137.014917" transform="rotate(-0 134.016 137.014917)">RiskPool (ours)</text>
      </g>
     </g>
     <g id="ytick_2">
@@ -175,14 +175,14 @@ C -3.578535 -2.078319 -4 -1.060812 -4 0
 C -4 1.060812 -3.578535 2.078319 -2.828427 2.828427 
 C -2.078319 3.578535 -1.060812 4 0 4 
 z
-" style="stroke: #2771ad"/>
+"/>
     </defs>
     <g clip-path="url(#p8d077db255)">
-     <use xlink:href="#m9f2988b8b8" x="261.7056" y="132.28274" style="fill: #2771ad; stroke: #2771ad"/>
+     <use xlink:href="#m9f2988b8b8" x="261.7056" y="132.28274" style="fill: #b63b09; stroke: #b63b09"/>
     </g>
    </g>
    <g id="text_13">
-    <text style="font-weight: 700; font-size: 13.5px; font-family: 'Arial'; text-anchor: end; fill: #2771ad" x="363.168" y="135.776392" transform="rotate(-0 363.168 135.776392)">0.7527</text>
+    <text style="font-weight: 700; font-size: 13.5px; font-family: 'Arial'; text-anchor: end; fill: #b63b09" x="363.168" y="135.776392" transform="rotate(-0 363.168 135.776392)">0.7527</text>
    </g>
    <g id="line2d_17">
     <defs>
@@ -267,7 +267,7 @@ L 295.776 497.869151
 L 295.776 524.712329 
 L 146.016 524.712329 
 z
-" clip-path="url(#pa1a40655ec)" style="fill: #edf5fb; stroke: #edf5fb; stroke-linejoin: miter"/>
+" clip-path="url(#pa1a40655ec)" style="fill: #e9f8f4; stroke: #e9f8f4; stroke-linejoin: miter"/>
    </g>
    <g id="matplotlib.axis_3">
     <g id="xtick_5">
@@ -338,7 +338,7 @@ L 295.776 491.904
     <g id="ytick_8">
      <g id="line2d_31"/>
      <g id="text_27">
-      <text style="font-weight: 700; font-size: 13px; font-family: 'Arial'; text-anchor: end; fill: #2771ad" x="134.016" y="516.022917" transform="rotate(-0 134.016 516.022917)">RSF [6]</text>
+      <text style="font-weight: 700; font-size: 13px; font-family: 'Arial'; text-anchor: end; fill: #086c64" x="134.016" y="516.022917" transform="rotate(-0 134.016 516.022917)">RSF [6]</text>
      </g>
     </g>
     <g id="ytick_9">
@@ -385,11 +385,11 @@ L 295.776 709.632
    </g>
    <g id="line2d_38">
     <g clip-path="url(#pa1a40655ec)">
-     <use xlink:href="#m9f2988b8b8" x="174.4704" y="511.29074" style="fill: #2771ad; stroke: #2771ad"/>
+     <use xlink:href="#m9f2988b8b8" x="174.4704" y="511.29074" style="fill: #086c64; stroke: #086c64"/>
     </g>
    </g>
    <g id="text_34">
-    <text style="font-weight: 700; font-size: 13.5px; font-family: 'Arial'; text-anchor: end; fill: #2771ad" x="363.168" y="514.784392" transform="rotate(-0 363.168 514.784392)">0.0757</text>
+    <text style="font-weight: 700; font-size: 13.5px; font-family: 'Arial'; text-anchor: end; fill: #086c64" x="363.168" y="514.784392" transform="rotate(-0 363.168 514.784392)">0.0757</text>
    </g>
    <g id="line2d_39">
     <g clip-path="url(#pa1a40655ec)">
